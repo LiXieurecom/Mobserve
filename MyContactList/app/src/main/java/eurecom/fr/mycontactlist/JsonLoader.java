@@ -30,7 +30,7 @@ public class JsonLoader extends AsyncTaskLoader<List<Contact>> {
         Log.i("main", "loader in Background");
         URL page = null;
         try {
-            page = new URL("http://1-dot-gqcontactlist.appspot.com/contactslist?respType=json");
+            page = new URL("http://lxlcontactlist.appspot.com/contactlist?respType=json");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
