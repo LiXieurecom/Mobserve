@@ -9,6 +9,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-class>eurecom.fr.contactlist.ContactlistServlet</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>DeleteContact</servlet-name>
+		<servlet-class>eurecom.fr.contactlist.DeleteContact</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>SaveContact</servlet-name>
 		<servlet-class>eurecom.fr.contactlist.SaveContactServlet</servlet-class>
 	</servlet>
@@ -23,6 +27,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>SaveContact</servlet-name>
 		<url-pattern>/save</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteContact</servlet-name>
+		<url-pattern>/delete</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ContactDetails</servlet-name>

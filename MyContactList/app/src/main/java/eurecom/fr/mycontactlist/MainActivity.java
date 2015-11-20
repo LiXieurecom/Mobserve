@@ -1,6 +1,7 @@
 package eurecom.fr.mycontactlist;
 
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,14 +10,15 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Contact>>, AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Contact>>, AdapterView.OnItemClickListener, android.view.View.OnClickListener {
     private  ListView listView;
     private List <Contact> contacts;
+    private Button addContact;
 
 
     @Override
@@ -27,7 +29,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         setContentView(R.layout.activity_main);
         listView = (ListView) findViewById(R.id.listView1);
+        addContact = (Button)findViewById(R.id.button);
+        addContact.setOnClickListener(this);
+    }
 
+    @Override
+    public void onClick (View v) {
+        if(v.getId() == R.id.button){
+            Contact currentContact = new Contact();
+            Intent intent = new Intent(MainActivity.this, ModifyContactActivity.class);
+            intent.putExtra("contact", currentContact);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -86,6 +99,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         Log.i("Main:","someone clicked on item: "+position);
-
+        Intent intent = new Intent(MainActivity.this, ModifyContactActivity.class);
+        Contact currentContact = (Contact)parent.getItemAtPosition(position);
+        intent.putExtra("contact", currentContact);
+        startActivity(intent);
     }
 }

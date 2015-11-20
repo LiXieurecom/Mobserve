@@ -19,17 +19,24 @@ android:paddingRight="@dimen/activity_horizontal_margin"
 
 android:paddingTop="@dimen/activity_vertical_margin"
 
-tools:context=".MainActivity" >
+tools:context=".MainActivity"
+    android:weightSum="1">
 
 
+    <Button
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
+        android:text="@string/button01"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal" />
 
-<ListView
+    <ListView
 
     android:id="@+id/listView1"
 
     android:layout_width="match_parent"
 
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content">
 
 </ListView>
 

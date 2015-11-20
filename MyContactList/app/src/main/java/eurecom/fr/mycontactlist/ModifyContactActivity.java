@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -67,20 +68,36 @@ public class ModifyContactActivity extends AppCompatActivity implements android.
     @Override
     public void onClick(View v){
         Handler handler= new Handler();
+        ResponseHandler rh = null;
         if (v.getId()==R.id.modify){
             Log.i("main", "I clicked modify");
             Map<String,String> data = new HashMap<String,String>();
             data.put("name", name.getText().toString());
             data.put("email",email.getText().toString());
-            data.put("phone",number.getText().toString());
-            ResponseHandler rh = new ResponseHandler(this,"save?id=" + contact.getId(), "POST", handler, this, data);
+            data.put("phone", number.getText().toString());
+            if (contact.getId().isEmpty()) {
+                rh = new ResponseHandler(this, "save", "POST", handler, this, data);
+            } else {
+                rh = new ResponseHandler(this, "save?id=" + contact.getId(), "POST", handler, this, data);
+            }
             new ModifyTask().execute(rh);
 
         }
         else{
-            ResponseHandler rh = new ResponseHandler(this,"delete?id=" + contact.getId(), "GET", handler, this, null);
+            if (contact.getId().isEmpty()) {
+                popUp("Canceled!");
+                this.finish();
+                return;
+            } else {
+                rh = new ResponseHandler(this,"delete?id=" + contact.getId(), "DELETE", handler, this, null);
+            }
             new ModifyTask().execute(rh);
             Log.i("main", "I clicked delete");
         }
+    }
+
+    private void popUp(String message)
+    {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

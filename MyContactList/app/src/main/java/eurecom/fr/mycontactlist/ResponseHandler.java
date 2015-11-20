@@ -69,10 +69,10 @@ public class ResponseHandler {
             }
         else{
             try {
-                deleteData();
+                out = deleteData();
+                Log.i("Response==", out);
             }catch (Exception e){
-
-
+                e.printStackTrace();
             }
         }
         return out;
@@ -87,6 +87,19 @@ public class ResponseHandler {
         * If not simply state that a problem has occurred
         * Remember to conclude the activity
         * */
+        if(!(response == null)) {
+            statusCode = response.compareTo("OK");
+            if (statusCode == 0) {
+                popUp("Successfully modify the contact!");
+                finish();
+            } else {
+                popUp("Some problems have occurred!");
+                finish();
+            }
+        } else {
+            popUp("Connection problem!");
+            finish();
+        }
     }
 
     private String convertParameters(Map <String,String> data){
@@ -114,14 +127,13 @@ public class ResponseHandler {
         return urlConnection.getResponseMessage();
     }
 
-    private void deleteData() throws MalformedURLException, IOException {
+    private String deleteData() throws IOException {
         Log.i("Request:",request);
         URL page = new URL(request);
         HttpURLConnection conn = null;
         conn = (HttpURLConnection) page.openConnection();
-        conn.connect();
+        conn.setRequestMethod("POST");
         InputStreamReader in = null;
-        String message = conn.getResponseMessage();
-        return;
+        return conn.getResponseMessage();
     }
 }

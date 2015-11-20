@@ -23,6 +23,14 @@ public class Contact implements Serializable {
         name = jsonObject.getString("name");
 
     }
+
+    public Contact() {
+        id = "";
+        name = "";
+        email = "";
+        phone = "";
+    }
+
     @Override
     public String toString(){
         return String.format("%s-%s",name,email);

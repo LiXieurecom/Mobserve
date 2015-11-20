@@ -82,6 +82,6 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/url"
         android:layout_margin="20sp"
-        android:text="Modify" />
+        android:text="Submit" />
 
 </RelativeLayout>
