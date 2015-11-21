@@ -70,7 +70,8 @@ public class ContactlistServlet extends HttpServlet {
 				contactJSON.put("name", contact.getProperty("name"));   
 				contactJSON.put("phone", contact.getProperty("phone"));  
 				contactJSON.put("id", KeyFactory.keyToString(contact.getKey()));  
-				contactJSON.put("email", contact.getProperty("email"));   
+				contactJSON.put("email", contact.getProperty("email"));
+				contactJSON.putOpt("pict", contact.getProperty("pict"));
 			} catch (JSONException e) {   
 				// xTODO Auto-generated catch block    
 				e.printStackTrace();   

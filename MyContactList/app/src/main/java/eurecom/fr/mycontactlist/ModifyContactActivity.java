@@ -1,6 +1,7 @@
 package eurecom.fr.mycontactlist;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -57,7 +58,7 @@ public class ModifyContactActivity extends AppCompatActivity implements android.
         name.setText(contact.getName());
         email.setText(contact.getEmail());
         number.setText(contact.getPhone());
-        url.setText("None");
+        url.setText(contact.getUrl());
 
         name.setImeOptions(EditorInfo.IME_ACTION_DONE);
         email.setImeOptions(EditorInfo.IME_ACTION_DONE);
@@ -75,13 +76,13 @@ public class ModifyContactActivity extends AppCompatActivity implements android.
             data.put("name", name.getText().toString());
             data.put("email",email.getText().toString());
             data.put("phone", number.getText().toString());
+            data.put("pict", url.getText().toString());
             if (contact.getId().isEmpty()) {
                 rh = new ResponseHandler(this, "save", "POST", handler, this, data);
             } else {
                 rh = new ResponseHandler(this, "save?id=" + contact.getId(), "POST", handler, this, data);
             }
             new ModifyTask().execute(rh);
-
         }
         else{
             if (contact.getId().isEmpty()) {

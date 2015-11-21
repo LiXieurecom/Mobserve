@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 
@@ -20,7 +19,6 @@ import java.util.Map;
 public class ResponseHandler {
 
     private final String url = "http://lxlcontactlist.appspot.com/";
-
     private Context context;
     private String request;
     private String format;
