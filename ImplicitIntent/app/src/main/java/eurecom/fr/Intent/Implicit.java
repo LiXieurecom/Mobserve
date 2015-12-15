@@ -13,6 +13,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -139,6 +140,7 @@ public class Implicit extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.button09:
+                Log.d("main", "enter button09");
                 intent = new Intent(Intent.ACTION_EDIT);
                 //intent.setData(CalendarContract.Events.CONTENT_URI);
                 intent.setType("vnd.android.cursor.item/event");

@@ -124,6 +124,7 @@
         android:layout_height="wrap_content"
         android:text="@string/ADDEVENT"
         android:id="@+id/button09"
+        android:onClick="callIntent"
         android:layout_below="@+id/button08"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
